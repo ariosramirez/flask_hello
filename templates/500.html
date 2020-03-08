@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+    {{ super() }}
+    500
+{% endblock %}
+
+{% block content %}
+<h1>Lo sentimos hubo un problema con el servidor :(,<br>
+    estamos trabajando para resolverlo.<br>
+    Intenta en unos intantes.
+</h1>
+<p>{{ error }}</p>
+{%endblock%}
