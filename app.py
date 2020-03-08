@@ -3,7 +3,9 @@ from flask import (Flask,
                    make_response,
                    redirect,
                    render_template,
-                   session)
+                   session,
+                   url_for,
+                   flash)
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
@@ -41,13 +43,22 @@ def index():
     return response
 
 
-@app.route('/hello')
+@app.route('/hello', methods=['GET', 'POST'])
 def hello_world():
     user_ip = session.get('user_ip')
+    username = session.get('useername')
     login_form = LoginFrom()
     context = dict(user_ip=user_ip,
                    todos=to_do_list,
-                   login_form=login_form)
+                   login_form=login_form,
+                   username=username)
+
+    if login_form.validate_on_submit():
+        username = login_form.user_name.data
+        session['useername'] = username
+        flash('Nombre de usuario registrado con éxito')
+        return redirect(url_for('index'))
+
     return render_template('hello.html', **context)
 
 
