@@ -29,8 +29,9 @@ class LoginFrom(FlaskForm):
 
 @app.cli.command()
 def test():
-    test = unittest.TestLoader().discover('test')
-    unittest.TextTestRunner().run(test)
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
+
 
 @app.errorhandler(500)
 def not_found_500(error):
