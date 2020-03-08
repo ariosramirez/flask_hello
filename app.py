@@ -7,7 +7,7 @@ todos = ['Comprar café', 'ir a el banco', 'Compar fruta']
 
 @app.route('/')
 def index():
-    user_ip = request.remote_aaddddr
+    user_ip = request.remote_addr
     response = make_response((redirect('/hello')))
     response.set_cookie('user_ip', user_ip)
     return response
@@ -21,11 +21,6 @@ def hello_world():
         'todos': todos
     }
     return render_template('hello.html', **context)
-
-
-@app.route('/model')
-def model():
-    return 
 
 
 if __name__ == '__main__':
