@@ -10,6 +10,8 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+import unittest
+
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -24,6 +26,11 @@ class LoginFrom(FlaskForm):
     password = PasswordField('password', validators=[DataRequired()])
     submit = SubmitField('Enviar')
 
+
+@app.cli.command()
+def test():
+    test = unittest.TestLoader().discover('test')
+    unittest.TextTestRunner().run(test)
 
 @app.errorhandler(500)
 def not_found_500(error):
