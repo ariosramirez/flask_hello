@@ -7,8 +7,8 @@ from flask import (request,
                    flash)
 import unittest
 
-from app import create_app
 from app.forms import LoginForm
+from app import create_app
 
 
 app = create_app()
