@@ -2,3 +2,4 @@ flask==1.1.1
 Flask-Bootstrap
 Flask-WTF
 Flask-testing
+blinker
