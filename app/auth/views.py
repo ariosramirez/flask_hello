@@ -5,7 +5,7 @@ from flask import (render_template,
                    flash)
 from app.forms import LoginForm
 
-from . import auth
+from app.auth import auth
 
 
 @auth.route('/login', methods=['GET', 'POST'])

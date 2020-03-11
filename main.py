@@ -2,9 +2,8 @@ from flask import (request,
                    make_response,
                    redirect,
                    render_template,
-                   session,
-                   url_for,
-                   flash)
+                   session
+                   )
 import unittest
 
 from app import create_app
