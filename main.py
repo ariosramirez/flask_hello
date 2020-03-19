@@ -1,17 +1,12 @@
-from flask import (request,
-                   make_response,
-                   redirect,
-                   render_template,
-                   session
-                   )
 import unittest
+from flask import request, make_response, redirect, render_template, session
+from flask_login import login_required
 
 from app import create_app
+from app.firestore_service import get_todos
 
 
 app = create_app()
-
-todos = ['Comprar cafe', 'Enviar solicitud de compra', 'Entregar video a productor ']
 
 
 @app.cli.command()
@@ -41,22 +36,18 @@ def index():
 
 
 @app.route('/hello', methods=['GET'])
+@login_required
 def hello():
     user_ip = session.get('user_ip')
     username = session.get('username')
 
     context = {
         'user_ip': user_ip,
-        'todos': todos,
+        'todos': get_todos(user_id=username),
         'username': username
     }
 
     return render_template('hello.html', **context)
-
-
-@app.route('/500_error_test')
-def index_pandas():
-    500
 
 
 if __name__ == '__main__':
