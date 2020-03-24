@@ -24,9 +24,8 @@
     </div>
 <br>
     <ul class="list-group">
-        <h3>Lista de tareas:</h3>
         {% for todo in todos %}
-        <li>{{ macros.render_todo(todo) }}</li>
+        <li>{{ macros.render_todo(todo, delete_form) }}</li>
         {% endfor %}
     </ul>
 {%endblock%}

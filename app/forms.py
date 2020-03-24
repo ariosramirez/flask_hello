@@ -10,5 +10,9 @@ class AuthForm(FlaskForm):
 
 
 class TodoForm(FlaskForm):
-    description = StringField('Descrioción', validators=[DataRequired()])
+    description = StringField('Descripción', validators=[DataRequired()])
     submit = SubmitField('Crear')
+
+
+class DeleteTodoForm(FlaskForm):
+    submit = SubmitField('Borrar')
