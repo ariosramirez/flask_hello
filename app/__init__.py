@@ -11,11 +11,11 @@ login_manger.login_view = 'auth.login'
 
 
 @login_manger.user_loader
-def load_user(username):
+def load_user(username: str) -> UserModel:
     return UserModel.query(username)
 
 
-def create_app():
+def create_app() -> Flask:
     app = Flask(__name__)
     Bootstrap(app)
     app.config.from_object(Config)

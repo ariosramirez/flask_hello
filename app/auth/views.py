@@ -9,7 +9,7 @@ from app.models import UserData, UserModel
 
 
 @auth.route('/login', methods=['GET', 'POST'])
-def login():
+def login() -> render_template:
     login_form = AuthForm()
     context = {
         'login_form': login_form
@@ -40,14 +40,14 @@ def login():
 
 @auth.route('logout')
 @login_required
-def logout():
+def logout() -> redirect:
     logout_user()
     flash("Regresa pronto")
     return redirect(url_for("auth.login"))
 
 
 @auth.route('signup', methods=['GET', 'POST'])
-def signup():
+def signup() -> render_template:
     signup_form = AuthForm()
     context = {
         'signup_form': signup_form
