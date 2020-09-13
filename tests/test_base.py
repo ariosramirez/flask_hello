@@ -25,7 +25,7 @@ class MainTest(TestCase):
     def test_hello_get(self):
         response = self.client.get(url_for('hello'))
 
-        self.assert200(response)
+        self.assertTrue(response.status_code, 302)
 
     def test_hello_post(self):
         response = self.client.post(url_for('hello'))
