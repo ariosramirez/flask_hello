@@ -33,25 +33,19 @@ def server_error(error):
 
 @app.route('/')
 def index():
-    user_ip = request.remote_addr
-
     response = make_response(redirect('/hello'))
-    session['user_ip'] = user_ip
-
     return response
 
 
 @app.route('/hello', methods=['GET', 'POST'])
 @login_required
 def hello():
-    user_ip = session.get('user_ip')
     username = current_user.id
     todo_form = TodoForm()
     delete_form = DeleteTodoForm()
     update_form = UpdateTodoForm()
 
     context = {
-        'user_ip': user_ip,
         'todos': get_todos(user_id=username),
         'username': username,
         'todo_form': todo_form,
