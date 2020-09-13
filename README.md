@@ -2,6 +2,11 @@
 An introduction into flask with python. 
 This is my first project in flask.
 
-For run the app in loca:
-1. export FLASK_APP=main.py
-2. flask run
+For run the app in local:
+1. ```bash
+   export FLASK_APP=main.py
+   export GOOGLE_CLOUD_PROJECT=flask-hello-platzi
+   ```
+2. ```bash
+   flask run
+   ```
